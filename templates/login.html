@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+
+{% block content%}
+
+    <header class="masthead" style="passing-top: 120px;">
+        <div class="container d-flex h-70 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Login</h1>
+
+                <form action="/login" method="POST">
+                  <div class="form-group">
+                        <label class = "register-names" for="UsernameInput">Username</label>
+                        <input type="username" class="form-control" id="UsernameInput" placeholder="Username" name="username">
+                  </div>
+
+                  <div class="form-group">
+                        <label class = "register-names" for="passwordInput">Password</label>
+                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" name="password">
+                  </div>
+
+                      <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}

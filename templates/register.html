@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+
+{% block content%}
+
+
+    <header class="masthead" style="passing-top: 120px;">
+        <div class="container d-flex h-70 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Register</h1>
+
+                <form action="/users/create" method="POST">
+
+                  <div class="form-group">
+                        <label class = "register-names" for="firstNameInput">First Name</label>
+                        <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" name="fname">
+                  </div>
+                  <div class="form-group">
+                        <label class = "register-names" for="lastNameInput">Last Name</label>
+                        <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" name="lname">
+                  </div>
+                  <div class="form-group">
+                        <label class = "register-names" for="ageInput">Age</label>
+                        <input type="number" class="form-control" id="ageInput" placeholder="Age" name="age">
+                  </div>
+                  <div class="form-group">
+                        <label class = "register-names" for="emailInput">Email</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="Email" name="email">
+                  </div>
+                  <div class="form-group">
+                        <label class = "register-names" for="UsernameInput">Username</label>
+                        <input type="text" class="form-control" id="UsernameInput" placeholder="Username" name="username">
+                  </div>
+                  <div class="form-group">
+                        <label class = "register-names" for="passwordInput">Password</label>
+                        <input type="text" class="form-control" id="passwordInput" placeholder="Password" name="password">
+                  </div>
+                      <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}

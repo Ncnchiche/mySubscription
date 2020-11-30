@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{% block content%}
+
+<header class="masthead">
+        <div class="container d-flex h-100 align-items-center">
+            <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">{{ current_user.fname }}'s Account</h1>
+                <hr>
+                <h3> EMAIL: {{ current_user.email }} </h>
+                <hr>
+                <h3> AGE: {{ current_user.age }} </h3>
+                </div>
+        </div>
+</header>
+
+
+{% endblock %}
