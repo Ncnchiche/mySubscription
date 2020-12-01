@@ -2,3 +2,19 @@
 label.register-names {
     color: white;
 }
+
+.web-body {
+    color: white;
+    padding:20px 15px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+    text-align: left;
+    width: 800px;
+}
+
+.center_text {
+    text-align: center !important;
+}
+
+.subscriptions {
+    padding:20px 15px;
+}

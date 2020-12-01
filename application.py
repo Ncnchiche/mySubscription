@@ -58,7 +58,6 @@ class User( UserMixin, db.Model ):
 class Subscription( db.Model ):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
-    image = db.Column(db.String(100))
     description = db.Column(db.String(15))
     price = db.Column(db.Integer)
     #relationships
@@ -67,7 +66,6 @@ class Subscription( db.Model ):
     def __init__(self, user, name, image, description, price):
         self.user = user
         self.name = name
-        self.image = image
         self.description = description
         self.price = price
 

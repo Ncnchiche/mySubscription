@@ -3,9 +3,35 @@
 {% block content%}
 
     <header class="masthead">
-        <div class="container d-flex h-100 align-items-center">
+        <div class="container d-flex h-50 align-items-center">
             <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase">Dashboard</h1>
+
+                <div class="container-fluid web-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="subscriptions">
+                                <h3> <b> SUBSCRIPTIONS: </b> </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        {% if current_user.subscriptions | length > 0 %}
+                            <!--Loop through list of Subscriptions-->
+
+
+
+                        {% else %}
+                            <!--Message if no subscription-->
+                            <div class="col-12 center_text">
+                                <h3>No Subscriptions at the moment</h3>
+
+                                <button type="button" class="btn btn-primary">Add a Subscription</button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </header>
