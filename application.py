@@ -57,14 +57,21 @@ class User( UserMixin, db.Model ):
 
 class Subscription( db.Model ):
     id = db.Column(db.Integer, primary_key=True)
-    duedate = db.Column(db.Integer)
+    name = db.Column(db.String(100))
+    image = db.Column(db.String(100))
+    description = db.Column(db.String(15))
+    price = db.Column(db.Integer)
     #relationships
-    #subdetails = db.relationship("Subdetail", backref="subscription")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, user, duedate):
+    def __init__(self, user, name, image, description, price):
         self.user = user
-        self.duedate = duedate
+        self.name = name
+        self.image = image
+        self.description = description
+        self.price = price
+
+
 
 
 # -----------------------------------------------------------------------------
