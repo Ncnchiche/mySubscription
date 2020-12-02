@@ -16,9 +16,59 @@
                         </div>
                     </div>
                     <div class="row">
-
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col">
+                                      Name:
+                                    </div>
+                                    <div class="col">
+                                      Description:
+                                    </div>
+                                    <div class="col">
+                                      Price:
+                                    </div>
+                                    <div class="col">
+                                      Delete:
+                                    </div>
+                                 </div>
+                                </div>
+                    </div>
+                    <br>
+                    <div class="row">
                         {% if current_user.subscriptions | length > 0 %}
                             <!--Loop through list of Subscriptions-->
+
+                            {% for subscription in current_user.subscriptions %}
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col">
+                                      {{ subscription.name }}
+                                    </div>
+                                    <div class="col">
+                                      {{ subscription.description }}
+                                    </div>
+                                    <div class="col">
+                                      {{ subscription.price }}
+                                    </div>
+                                    <div class="col">
+                                        <a href="/subscriptions/{{ subscription.id }}/delete" data-method="delete" onclick="return confirm('Are You sure you want to delete?")>
+                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                        </a>
+                                    </div>
+                                 </div>
+                                </div>
+                            {% endfor %}
+                                <div class="container">
+                                  <div class="row">
+                                    <div class="col">
+                                    </div>
+                                    <div class="col">
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
+                                    </div>
+                                    <div class="col">
+                                    </div>
+                                 </div>
+                                </div>
 
                         {% else %}
                             <!--Message if no subscription-->

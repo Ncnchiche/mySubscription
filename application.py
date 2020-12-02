@@ -192,6 +192,7 @@ def all_subscriptions():
     return render_template("subscriptions.html")
 
 @app.route("/subscriptions/create", methods=["POST"])
+@login_required
 def create_subscription():
     name = request.form.get('name', "")
     description = request.form.get('description', "")
@@ -216,13 +217,13 @@ def edit_subscription(id):
     else:
         return render_template("edit_subscription.html")
 
-@app.route("/subscriptions/<id>/delete", methods=["POST"])
+@app.route("/subscriptions/<id>/delete")
 @login_required
 def delete_subscription(id):
     subscription = Subscription.query.get( int(id) )
     db.session.delete(subscription)
     db.session.commit()
-    return redirect("subscription")
+    return redirect("/dashboard")
 
 
 # -----------------------------------------------------------------------------
