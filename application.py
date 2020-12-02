@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment, Bundle
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 
+
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.secret_key = "82heduawbdhb3w73ajdnjwajs"
@@ -69,7 +70,23 @@ class Subscription( db.Model ):
         self.description = description
         self.price = price
 
+class Subdetail(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, nullable=False)
+    #relationship
+    #subscriptions = db.relationship('Subscription', backref="subdetail")
 
+    def __init__(self, date):
+        self.date = date
+
+class Category( db.Model ):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    #relationship
+
+
+    def __init__(self, name):
+        self.name = name
 
 
 # -----------------------------------------------------------------------------
