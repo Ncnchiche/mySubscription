@@ -20,16 +20,46 @@
                         {% if current_user.subscriptions | length > 0 %}
                             <!--Loop through list of Subscriptions-->
 
-
-
                         {% else %}
                             <!--Message if no subscription-->
                             <div class="col-12 center_text">
                                 <h3>No Subscriptions at the moment</h3>
 
-                                <button type="button" class="btn btn-primary">Add a Subscription</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
                             </div>
+
                         {% endif %}
+
+                        <div class="modal fade" id="addASubscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+
+                            <form action="/subscriptions/create" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add A Subscription</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                          <div class="modal-body">
+
+                                            <input type="text" class="form-control" name="name" placeholder="Enter subscription name" required="true"> <br>
+
+                                            <input type="text" class="form-control" name="description" placeholder="Description"> <br>
+
+                                            <input type="number" class="form-control" name="price" placeholder="price" required="true"> <br>
+
+
+                                          </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Add Subscription</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

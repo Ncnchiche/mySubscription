@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment, Bundle
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 
-
 app = Flask(__name__)
 app.config["DEBUG"] = True
 app.secret_key = "82heduawbdhb3w73ajdnjwajs"
@@ -55,6 +54,13 @@ class User( UserMixin, db.Model ):
         self.username = username
         self.password = password
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+
+    def __init__(self, name):
+        self.name = name
+
 
 class Subscription( db.Model ):
     id = db.Column(db.Integer, primary_key=True)
@@ -63,30 +69,13 @@ class Subscription( db.Model ):
     price = db.Column(db.Integer)
     #relationships
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    #category = db.relationship('Category', backref="subscription")
 
-    def __init__(self, user, name, image, description, price):
-        self.user = user
+    def __init__(self, name, description, price, user):
         self.name = name
         self.description = description
         self.price = price
-
-class Subdetail(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.Date, nullable=False)
-    #relationship
-    #subscriptions = db.relationship('Subscription', backref="subdetail")
-
-    def __init__(self, date):
-        self.date = date
-
-class Category( db.Model ):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    #relationship
-
-
-    def __init__(self, name):
-        self.name = name
+        self.user = user
 
 
 # -----------------------------------------------------------------------------
@@ -195,21 +184,50 @@ def delete_user(id):
     return redirect("users")
 
 # -----------------------------------------------------------------------------
-# CRUDI - UserSubscription Controller
-# -----------------------------------------------------------------------------
-
-
-
-# -----------------------------------------------------------------------------
 # CRUDI - Subscription Controller
 # -----------------------------------------------------------------------------
+@app.route("/subscriptions")
+def all_subscriptions():
+    allSubscriptions = Subscription.query.all()
+    return render_template("subscriptions.html")
+
+@app.route("/subscriptions/create", methods=["POST"])
+def create_subscription():
+    name = request.form.get('name', "")
+    description = request.form.get('description', "")
+    price = request.form.get('price', "")
+
+    newSubscription = Subscription( name, description, price, current_user)
+
+    db.session.add(newSubscription)
+    db.session.commit()
+
+    return redirect("/dashboard")
+
+@app.route("/subscriptions/<id>/edit", methods=["GET", "POST"])
+def edit_subscription(id):
+    subscription = Subscription.query.get( int(id) )
+    if request == "POST":
+        subscription.name = request.form.get('name', "")
+        subscription.description = request.form.get('description', "")
+        subscription.price = request.form.get('price', "")
+        db.session.commit()
+        return render_template("subscription.html")
+    else:
+        return render_template("edit_subscription.html")
+
+@app.route("/subscriptions/<id>/delete", methods=["POST"])
+@login_required
+def delete_subscription(id):
+    subscription = Subscription.query.get( int(id) )
+    db.session.delete(subscription)
+    db.session.commit()
+    return redirect("subscription")
 
 
 # -----------------------------------------------------------------------------
 # CRUDI - Category Controller
 # -----------------------------------------------------------------------------
-
-
 
 if __name__ == "__main__":
     app.run()
