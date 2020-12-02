@@ -28,6 +28,9 @@
                                       Price:
                                     </div>
                                     <div class="col">
+                                      Category:
+                                    </div>
+                                    <div class="col">
                                       Delete:
                                     </div>
                                  </div>
@@ -49,6 +52,9 @@
                                     </div>
                                     <div class="col">
                                       {{ subscription.price }}
+                                    </div>
+                                    <div class="col">
+                                      Category
                                     </div>
                                     <div class="col">
                                         <a href="/subscriptions/{{ subscription.id }}/delete" data-method="delete" onclick="return confirm('Are You sure you want to delete?")>

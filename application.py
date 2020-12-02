@@ -230,5 +230,11 @@ def delete_subscription(id):
 # CRUDI - Category Controller
 # -----------------------------------------------------------------------------
 
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run()
