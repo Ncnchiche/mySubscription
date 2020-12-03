@@ -229,10 +229,40 @@ def delete_subscription(id):
 # -----------------------------------------------------------------------------
 # CRUDI - Category Controller
 # -----------------------------------------------------------------------------
+@app.route("/categories")
+def all_categories():
+    allCategories = Category.query.all()
+    return render_template("categories.html")
 
+@app.route("/categories/create", methods=["POST"])
+@login_required
+def create_category():
+    name = request.form.get('name', "")
 
+    newCategory = Category( name, current_user)
 
+    db.session.add(newCategory)
+    db.session.commit()
 
+    return redirect("/dashboard")
+
+@app.route("/categories/<id>/edit", methods=["GET", "POST"])
+def edit_category(id):
+    category = Category.query.get( int(id) )
+    if request == "POST":
+        category.name = request.form.get('name', "")
+        db.session.commit()
+        return render_template("category.html")
+    else:
+        return render_template("edit_category.html")
+
+@app.route("/categories/<id>/delete")
+@login_required
+def delete_category(id):
+    category = Category.query.get( int(id) )
+    db.session.delete(category)
+    db.session.commit()
+    return redirect("/dashboard")
 
 
 
