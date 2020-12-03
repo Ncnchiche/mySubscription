@@ -57,9 +57,11 @@ class User( UserMixin, db.Model ):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, name):
+    def __init__(self, name, user):
         self.name = name
+        self.user = user
 
 
 class Subscription( db.Model ):
