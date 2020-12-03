@@ -72,6 +72,9 @@
                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
                                     </div>
                                     <div class="col">
+                                    <div class="col">
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
+                                    </div>
                                     </div>
                                  </div>
                                 </div>
@@ -80,8 +83,8 @@
                             <!--Message if no subscription-->
                             <div class="col-12 center_text">
                                 <h3>No Subscriptions at the moment</h3>
-
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
                             </div>
 
                         {% endif %}
@@ -113,6 +116,31 @@
                                     </div>
                                 </div>
                             </form>
+
+
+                            </div>
+                        </div>
+                        <div class="modal fade" id="addACategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+
+                            <form action="/categories/create" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add A Category</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                          <div class="modal-body">
+                                            <input type="text" class="form-control" name="name" placeholder="Enter Category Name" required="true"> <br>
+                                          </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Add Category</button>
+                                    </div>
+                                </div>
+                            </form>
+
 
                             </div>
                         </div>
