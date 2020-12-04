@@ -6,7 +6,9 @@
         <div class="container d-flex h-50 align-items-center">
             <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase">Dashboard</h1>
-
+                <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                <!--SUBSCRIPTION FORM-->
+                <!-------------------------------------------------------------------------------------------------------------------------------------------->
                 <div class="container-fluid web-body">
                     <div class="row">
                         <div class="col-12">
@@ -64,24 +66,12 @@
                                  </div>
                                 </div>
                             {% endfor %}
-                                <div class="container">
-                                  <div class="row">
-                                    <div class="col">
-                                    </div>
-                                    <div class="col">
-                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
-                                    </div>
-                                    <div class="col">
-                                    </div>
-                                    <div class="col">
-                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
-                                    </div>
-                                    <div class="col">
-                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewCategories">View Categories</button>
-                                    </div>
-                                 </div>
-                                </div>
 
+                              <div class="col-12 center_text">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewCategories">View Categories</button>
+                              </div>
                         {% else %}
                             <!--Message if no subscription-->
                             <div class="col-12 center_text">
