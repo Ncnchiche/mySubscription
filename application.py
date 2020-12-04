@@ -43,8 +43,6 @@ class User( UserMixin, db.Model ):
     password = db.Column(db.String(20))
     #relationships
     subscriptions = db.relationship("Subscription", backref="user")
-    #subdetails = db.relationship("Subdetail", backref="user")
-    #categories = db.relationship("Category", backref="user")
 
     def __init__(self, fname, lname, age, email, username, password):
         self.fname = fname
@@ -58,6 +56,8 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    #relationship
+    subscriptions = db.relationship("Subscription", backref="category")
 
     def __init__(self, name, user):
         self.name = name
@@ -71,13 +71,14 @@ class Subscription( db.Model ):
     price = db.Column(db.Integer)
     #relationships
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    #category = db.relationship('Category', backref="subscription")
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
 
-    def __init__(self, name, description, price, user):
+    def __init__(self, name, description, price, category, user):
         self.name = name
         self.description = description
         self.price = price
         self.user = user
+        self.category = category
 
 
 # -----------------------------------------------------------------------------
@@ -119,7 +120,8 @@ def welcome():
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template("dashboard.html")
+    categories = Category.query.all()
+    return render_template("dashboard.html", categories = categories)
 
 @app.route("/logout")
 @login_required
@@ -157,7 +159,6 @@ def create_user():
     return redirect("/login")
 
 @app.route("/users/<id>")
-@login_required
 def get_user(id):
     user = User.query.get( int(id) )
     return render_template("user.html", user = user)
@@ -166,16 +167,18 @@ def get_user(id):
 @login_required
 def edit_user(id):
     user = User.query.get( int(id) )
-    if request == "Post":
+    if request == "POST":
         user.fname = request.form.get('fname', "")
         user.lname = request.form.get('lname', "")
         user.age = request.form.get('age', "")
         user.email = request.form.get('email', "")
+        user.username = request.form.get('username', "")
         user.password = request.form.get('password', "")
+
         db.session.commit()
-        return render_template("user.html", user = user)
+        return redirect("/account")
     else:
-        return render_template("edit_user.html", user = user)
+        return redirect("/account")
 
 @app.route("/users/<id>/delete", methods=["POST"])
 @login_required
@@ -199,8 +202,10 @@ def create_subscription():
     name = request.form.get('name', "")
     description = request.form.get('description', "")
     price = request.form.get('price', "")
+    category_id = request.form.get('category', "")
+    category = Category.query.get( int( category_id ))
 
-    newSubscription = Subscription( name, description, price, current_user)
+    newSubscription = Subscription( name, description, price, category, current_user)
 
     db.session.add(newSubscription)
     db.session.commit()

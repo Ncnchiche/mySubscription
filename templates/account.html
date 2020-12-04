@@ -7,11 +7,50 @@
             <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase">{{ current_user.fname }}'s Account</h1>
                 <hr>
-                <h3> EMAIL: {{ current_user.email }} </h>
+                <h3> First Name: {{ current_user.fname }} </h>
                 <hr>
-                <h3> AGE: {{ current_user.age }} </h3>
+                <h3> Last Name: {{ current_user.lname }} </h3>
+                <hr>
+                <h3> Age: {{ current_user.age }} </h>
+                <hr>
+                <h3> Email: {{ current_user.email }} </h3>
+                <hr>
+                <h3> Username: {{ current_user.username }} </h>
+                <hr>
+                <h3> Password: {{ current_user.password }} </h3>
+                <br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editAccount">Edit Account</button>
                 </div>
+
+                    <div class="modal fade" id="editAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <form action="/users/{{ current_user.id }}/edit" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                          <div class="modal-body">
+                                                <input type="text" class="form-control" name="fname" value="{{current_user.fname}}" required="true"> <br>
+                                                <input type="text" class="form-control" name="lname" value="{{current_user.lname}}" required="true"> <br>
+                                                <input type="text" class="form-control" name="age" value="{{current_user.age}}" required="true"> <br>
+                                                <input type="text" class="form-control" name="email" value="{{current_user.email}}" required="true"> <br>
+                                                <input type="text" class="form-control" name="username" value="{{current_user.username}}" required="true"> <br>
+                                                <input type="text" class="form-control" name="password" value="{{current_user.password}}" required="true"> <br>
+                                          </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
         </div>
+
 </header>
 
 
