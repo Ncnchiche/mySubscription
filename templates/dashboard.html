@@ -72,9 +72,12 @@
                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
                                     </div>
                                     <div class="col">
+                                    </div>
                                     <div class="col">
                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
                                     </div>
+                                    <div class="col">
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewCategories">View Categories</button>
                                     </div>
                                  </div>
                                 </div>
@@ -85,9 +88,14 @@
                                 <h3>No Subscriptions at the moment</h3>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addASubscription">Add a Subscription</button>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addACategory">Add a Category</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewCategories">View Categories</button>
                             </div>
 
                         {% endif %}
+
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!--ADD a Subscription MODAL-->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
 
                         <div class="modal fade" id="addASubscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
@@ -105,9 +113,9 @@
 
                                             <input type="text" class="form-control" name="description" placeholder="Description"> <br>
 
-                                            <input type="number" class="form-control" name="price" placeholder="price" required="true"> <br>
+                                            <input type="number" class="form-control" name="price" placeholder="price" required="true" min="0" step="0.01"> <br>
 
-                                            <select class= "form-control" name="category" id="category">
+                                            <select class= "form-control" name="category" id="category" required="true">
                                             {% for x in categories%}
 
                                             <option value="{{ x.id }}"> {{ x.name }} </option>
@@ -124,10 +132,12 @@
                             </form>
                             </div>
                         </div>
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!--ADD CATEGORY MODAL-->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
 
                         <div class="modal fade" id="addACategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog" role="document">
-
                             <form action="/categories/create" method="POST">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -145,10 +155,52 @@
                                     </div>
                                 </div>
                             </form>
-
-
                             </div>
                         </div>
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!--VIEW CATEGORY MODAL-->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <div class="modal fade" id="viewCategories" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+
+                            <form action="/categories/create" method="POST">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">CATEGORIES</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                          <div class="modal-body">
+                                            <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                                            <!--LOOP TO VIEW CATEGORY MODAL-->
+                                            <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                                            {% for category in categories %}
+                                                <div class="container">
+                                                  <div class="row">
+                                                    <div class="col">
+                                                      {{ category.name }}
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href="/categories/{{ category.id }}/delete" data-method="delete" onclick="return confirm('Are You sure you want to delete?")>
+                                                            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                                                        </a>
+                                                    </div>
+                                                 </div>
+                                                 <br>
+                                                </div>
+                                            {% endfor %}
+                                          </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class= "form-control" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!--END-->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
                     </div>
                 </div>
             </div>
