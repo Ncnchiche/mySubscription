@@ -17,3 +17,7 @@ label.register-names {
 .subscriptions {
     padding:20px 15px;
 }
+
+.bar {
+    background-color: rgba(0,0,0,0.6) ;
+}
