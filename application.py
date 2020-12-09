@@ -88,7 +88,6 @@ class Subscription( db.Model ):
 def home():
     return render_template("index.html")
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -108,30 +107,6 @@ def login():
 
     else:
         return render_template("login.html")
-
-
-labels = [
-    'JAN', 'FEB', 'MAR', 'APR',
-    'MAY', 'JUN', 'JUL', 'AUG',
-    'SEP', 'OCT', 'NOV', 'DEC'
-]
-
-values = [
-    967.67, 1190.89, 1079.75, 1349.19,
-    2328.91, 2504.28, 2873.83, 4764.87,
-    4349.29, 6458.30, 9907, 16297
-]
-
-colors = [
-    "#000000", "#000000", "#000000", "#000000",
-    "#000000", "#000000", "#000000", "#000000",
-    "#000000", "#000000", "#000000", "#000000"]
-
-@app.route('/bar')
-def bar():
-    bar_labels=labels
-    bar_values=values
-    return render_template('bar_chart.html', title='Bar Chart', max=17000, labels=bar_labels, values=bar_values)
 
 @app.route("/register")
 def register():
@@ -192,7 +167,7 @@ def get_user(id):
 @login_required
 def edit_user(id):
     user = User.query.get( int(id) )
-    if request == "POST":
+    if request.method == "POST":
         user.fname = request.form.get('fname', "")
         user.lname = request.form.get('lname', "")
         user.age = request.form.get('age', "")
