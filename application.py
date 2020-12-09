@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment, Bundle
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
+import json
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -132,6 +133,25 @@ def logout():
 @app.route("/account")
 def account():
     return render_template("account.html")
+
+category_data = { }
+
+
+colors = [
+    "#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA",
+    "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
+    "#C71585", "#FF4500", "#FEDCBA", "#46BFBD"]
+
+@app.route('/bar')
+def bar():
+    subscriptions = Subscription.query.all()
+    for subscription in subscriptions:
+        if subscription.category.name not in category_data:
+            category_data[subscription.category.name ] = 0
+        category_data[subscription.category.name ]+= subscription.price
+
+
+    return render_template('bar_chart.html', title='Bar Chart', max = max(list(category_data.values())), labels=json.dumps(list(category_data.keys())), values=json.dumps(list(category_data.values())))
 
 # -----------------------------------------------------------------------------
 # CRUDI - Users Controller
