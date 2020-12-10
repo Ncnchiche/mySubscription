@@ -142,15 +142,14 @@ colors = [
     "#ABCDEF", "#DDDDDD", "#ABCABC", "#4169E1",
     "#C71585", "#FF4500", "#FEDCBA", "#46BFBD"]
 
-@app.route('/bar')
+@app.route("/bar")
+@login_required
 def bar():
     subscriptions = Subscription.query.all()
     for subscription in subscriptions:
         if subscription.category.name not in category_data:
             category_data[subscription.category.name ] = 0
         category_data[subscription.category.name ]+= subscription.price
-
-
     return render_template('bar_chart.html', title='Bar Chart', max = max(list(category_data.values())), labels=json.dumps(list(category_data.keys())), values=json.dumps(list(category_data.values())))
 
 # -----------------------------------------------------------------------------
