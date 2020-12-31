@@ -12,7 +12,9 @@ A Dashboard which includes :
 -A graph that addes the total of each category 
  
   
-  This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend.
+ This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend.
+  
+  
   
   
   What i Have Learned While Making This WebApp:
