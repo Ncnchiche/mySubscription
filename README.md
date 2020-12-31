@@ -13,3 +13,21 @@ A Dashboard which includes :
  
   
   This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend.
+  
+  
+  What i Have Learned While Making This WebApp:
+  
+  
+  -Using MVC design pattern to divide the related program logic into three elements
+  
+  -Using Jinja for web template for python programming {{ }}
+  
+  -Connecting Database to the webapp.....Used Flask-MySQL.
+  
+  -Using Javascript API to Create an Interactive Graph
+  
+  -Using BootStrap as FrontEnd
+  
+  -Routing and Redirecting Pages
+  
+  
