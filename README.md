@@ -1,5 +1,5 @@
 # mySubscription  
-###Flask - Subscription tracker webapp 
+### Flask - Subscription tracker webapp 
 
 
 ### This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
