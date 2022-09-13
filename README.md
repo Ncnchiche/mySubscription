@@ -32,3 +32,8 @@ Exit out of python and type
 ```python
 flask run
 ```
+### HomePage Demo
+<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense.gif" alt="demo" width="400">
+
+### Dashboard Demo
+<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense2.gif" alt="demo2" width="400">
