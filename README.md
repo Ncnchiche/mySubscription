@@ -1,6 +1,5 @@
 <h1 align="center">Ghost Expense</h1>
 ## What is this?
-
 Not everyone has the time to track their subscriptions and see which category takes up the most of their monthly money. Here I created a Basic Web Application to be able to track your expenses and see analytically which category takes up the most of your budget
 A Dashboard which includes :
 -A List of subscriptions  
@@ -20,10 +19,9 @@ Then go to your terminal and cd into the file and type python
 ```python
 >from application import db, User, Category, Subscription
 >db.create_all()
-
-Exit out of python and type
+```
+# Exit out of python and type
 ```python
 flask run
-### Flask - Subscription tracker webapp 
-
+```
 ### This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
