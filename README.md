@@ -33,7 +33,7 @@ Exit out of python and type
 flask run
 ```
 ### HomePage Demo
-<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense.gif" alt="demo" width="400">
+<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense.gif" alt="demo" width="700">
 
 ### Dashboard Demo
-<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense2.gif" alt="demo2" width="400">
+<img src="https://github.com/Ncnchiche/mySubscription/blob/master/GhostExpense2.gif" alt="demo2" width="700">
