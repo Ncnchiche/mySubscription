@@ -20,8 +20,9 @@ Then go to your terminal and cd into the file and type python
 >from application import db, User, Category, Subscription
 >db.create_all()
 ```
-# Exit out of python and type
+Exit out of python and type
 ```python
 flask run
 ```
-### This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
+### How Was it Made?
+This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
