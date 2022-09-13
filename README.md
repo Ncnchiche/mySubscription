@@ -2,6 +2,7 @@
 
 ## What is this?
 Not everyone has the time to track their subscriptions and see which category takes up the most of their monthly money. Here I created a Basic Web Application to be able to track your expenses and see analytically which category takes up the most of your budget.
+
 This web application includes:
 - A HomePage
 - Register/Login Page
