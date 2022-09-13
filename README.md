@@ -3,8 +3,11 @@
 ## What is this?
 Not everyone has the time to track their subscriptions and see which category takes up the most of their monthly money. Here I created a Basic Web Application to be able to track your expenses and see analytically which category takes up the most of your budget
 A Dashboard which includes :
--A List of subscriptions  
--A graph that addes the total of each category 
+- A HomePage
+- Register/Login Page
+- A Dashboard where you can add, edit, remove Subscription
+- A Interactive graph showing which category takes up most of your budget
+- A page where you can edit your account information
 
 ## What I Learned
 * Using MVC design pattern to divide the related program logic into three elements
