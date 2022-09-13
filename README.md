@@ -10,6 +10,9 @@ This web application includes:
 - A Interactive graph showing which category takes up most of your budget
 - A page where you can edit your account information
 
+### How Was it Made?
+This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
+
 ## What I Learned
 * Using MVC design pattern to divide the related program logic into three elements
 * Using Jinja for web template for python programming {{ }}
@@ -29,5 +32,3 @@ Exit out of python and type
 ```python
 flask run
 ```
-### How Was it Made?
-This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
