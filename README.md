@@ -16,14 +16,14 @@ A Dashboard which includes :
 
 ## How to Run
 Firstly clone the files and download all the dependencies
-Then go to your terminal and cd into the file
+Then go to your terminal and cd into the file and type python
 ```python
 >from application import db, User, Category, Subscription
 >db.create_all()
-*Exit out of python and type
+
+Exit out of python and type
+```python
 flask run
-
-
 ### Flask - Subscription tracker webapp 
 
 ### This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
