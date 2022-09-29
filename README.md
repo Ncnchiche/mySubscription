@@ -1,5 +1,8 @@
 <h1 align="center">Ghost Expense</h1>
 
+#IMPORTANT
+THIS WEBAPP DOESNT WORK ANYMORE. WILL BE CREATING AND UPDATING A NEW ONE IN THE FUTURE
+
 ## What is this?
 Not everyone has the time to track their subscriptions and see which category takes up the most of their monthly budget. Here I created a Basic Web Application to be able to track your expenses and see analytically which category takes up the most of your budget.
 
