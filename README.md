@@ -14,7 +14,7 @@ This web application includes:
 - A page where you can edit your account information
 
 ### How Was it Made?
-This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend. 
+This Was Made using Flask as the framework, Python for the backend, Javascript for interactive graph, html & css (bootstrap) for frontend design, and flask extension of MySQL for the database. 
 
 ## What I Learned
 * Using MVC design pattern to divide the related program logic into three elements
